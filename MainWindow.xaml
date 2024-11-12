@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:alex_druzhartmann_weatherapp_v2"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="WeatherApp" Height="450" Width="800">
     <Grid>
 
-        <TextBox x:Name="TB_City" />
+        <TextBox Name="TB_City" />
 
     </Grid>
 </Window>
