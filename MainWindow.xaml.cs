@@ -52,10 +52,42 @@ namespace alex_druzhartmann_weatherapp_v2
                     return;
                 }
 
-                // RESTE DES VARIABLES DES INFOS QU'ON RECUPERE
+                // RECUPERATION DES CLASSES
                 CityInfo city_info = root.city_info;
+                CurrentCondition current_condition = root.current_condition;
+                FcstDay1 fcst_fday = root.fcst_day_1;
+                FcstDay2 fcst_sday = root.fcst_day_2;
+                FcstDay3 fcst_tday = root.fcst_day_3;
+
+                // VARIABLES POUR LA TEMPERATURE DU JOUR + LA VILLE
                 var city = city_info.name;
+                var temp = current_condition.tmp;
+
+                // VARIABLES POUR LES JOURS DE LA SEMAINE
+                var fday = fcst_fday.day_long;
+                var sday = fcst_sday.day_long;
+                var tday = fcst_tday.day_long;
+
+                // VARIABLES POUR LES TEMPERATURES EN PREVISIONS
+                var fday_tempmin = fcst_fday.tmin;
+                var sday_tempmin = fcst_sday.tmin;
+                var tday_tempmin = fcst_tday.tmin;
+                var fday_tempmax = fcst_fday.tmax;
+                var sday_tempmax = fcst_sday.tmax;
+                var tday_tempmax = fcst_tday.tmax;
+
+                // AFFICHAGE DANS TEXTBOX
                 TB_City.Text = city;
+                TB_Temp.Text = temp.ToString() + "°";
+                TB_Fcst_Fday.Text = fday;
+                TB_Fcst_Sday.Text = sday;
+                TB_Fcst_Tday.Text = tday;
+                TB_Tempmin_Fday.Text = fday_tempmin.ToString() + "°";
+                TB_Tempmin_Sday.Text = sday_tempmin.ToString() + "°";
+                TB_Tempmin_Tday.Text = tday_tempmin.ToString() + "°";
+                TB_Tempmax_Fday.Text = fday_tempmax.ToString() + "°";
+                TB_Tempmax_Sday.Text = sday_tempmax.ToString() + "°";
+                TB_Tempmax_Tday.Text = tday_tempmax.ToString() + "°";
 
             }
             return;

@@ -8,7 +8,37 @@
         Title="WeatherApp" Height="450" Width="800">
     <Grid>
 
-        <TextBox Name="TB_City" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBox Grid.Row="1" Grid.Column="2" Name="TB_City" TextAlignment="Center" Height="40" FontSize="30" BorderBrush="#FFFFFF"/>
+        <TextBox Grid.Row="2" Grid.ColumnSpan="5" Name="TB_Temp" TextAlignment="Center" Height="60" Width="160" FontSize="50" BorderBrush="#FFFFFF"/>
+
+        <TextBox Grid.Row="4" Grid.Column="1" Name="TB_Fcst_Fday" TextAlignment="Center" Height="40" FontSize="30" BorderBrush="#FFFFFF"/>
+        <TextBox Grid.Row="5" Grid.Column="1" Name="TB_Fcst_Sday" TextAlignment="Center" Height="40" FontSize="30" BorderBrush="#FFFFFF"/>
+        <TextBox Grid.Row="6" Grid.Column="1" Name="TB_Fcst_Tday" TextAlignment="Center" Height="40" FontSize="30" BorderBrush="#FFFFFF"/>
+
+        <TextBox Grid.Row="4" Grid.Column="2" Name="TB_Tempmin_Fday" TextAlignment="Center" Height="40" FontSize="30" BorderBrush="#FFFFFF"/>
+        <TextBox Grid.Row="5" Grid.Column="2" Name="TB_Tempmin_Sday" TextAlignment="Center" Height="40" FontSize="30" BorderBrush="#FFFFFF"/>
+        <TextBox Grid.Row="6" Grid.Column="2" Name="TB_Tempmin_Tday" TextAlignment="Center" Height="40" FontSize="30" BorderBrush="#FFFFFF"/>
+        <TextBox Grid.Row="4" Grid.Column="3" Name="TB_Tempmax_Fday" TextAlignment="Center" Height="40" FontSize="30" BorderBrush="#FFFFFF"/>
+        <TextBox Grid.Row="5" Grid.Column="3" Name="TB_Tempmax_Sday" TextAlignment="Center" Height="40" FontSize="30" BorderBrush="#FFFFFF"/>
+        <TextBox Grid.Row="6" Grid.Column="3" Name="TB_Tempmax_Tday" TextAlignment="Center" Height="40" FontSize="30" BorderBrush="#FFFFFF"/>
 
     </Grid>
 </Window>
