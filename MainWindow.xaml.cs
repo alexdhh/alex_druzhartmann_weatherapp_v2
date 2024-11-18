@@ -27,7 +27,7 @@ namespace alex_druzhartmann_weatherapp_v2
         public async Task GetWeather()
         {
             HttpClient client = new HttpClient();
-            HttpResponseMessage response = await client.GetAsync("https://www.prevision-meteo.ch/services/json/Paris");
+            HttpResponseMessage response = await client.GetAsync("https://www.prevision-meteo.ch/services/json/Marseille");
             if (response.IsSuccessStatusCode)
             {
                 var content = await response.Content.ReadAsStringAsync();
@@ -75,6 +75,21 @@ namespace alex_druzhartmann_weatherapp_v2
                 var fday_tempmax = fcst_fday.tmax;
                 var sday_tempmax = fcst_sday.tmax;
                 var tday_tempmax = fcst_tday.tmax;
+
+                // VARIABLES POUR LES ICONS DE LA METEO
+
+                string current_condition_icon = current_condition.icon_big;
+                Uri asset0 = new Uri(current_condition_icon);
+                ImgDay.Source = new BitmapImage(asset0);
+                string fday_icon = fcst_fday.icon_big;
+                Uri asset1 = new Uri(fday_icon);
+                ImgDay1.Source = new BitmapImage(asset1);
+                string sday_icon = fcst_sday.icon_big;
+                Uri asset2 = new Uri(sday_icon);
+                ImgDay2.Source = new BitmapImage(asset2);
+                string tday_icon = fcst_tday.icon_big;
+                Uri asset3 = new Uri(tday_icon);
+                ImgDay3.Source = new BitmapImage(asset3);
 
                 // AFFICHAGE DANS TEXTBOX
                 TB_City.Text = city;

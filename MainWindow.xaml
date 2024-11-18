@@ -5,10 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:alex_druzhartmann_weatherapp_v2"
         mc:Ignorable="d"
-        Title="WeatherApp" Height="450" Width="800">
+        Title="WeatherApp" Height="850" Width="478">
     <Grid>
 
+        <Grid.Resources>
+            <Style TargetType="{x:Type TextBox}">
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="BorderThickness" Value="0"/>
+            </Style>
+        </Grid.Resources>
+
         <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
             <RowDefinition Height="2*"/>
             <RowDefinition Height="2*"/>
             <RowDefinition Height="2*"/>
@@ -23,22 +31,41 @@
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
 
-        <TextBox Grid.Row="1" Grid.Column="2" Name="TB_City" TextAlignment="Center" Height="40" FontSize="30" BorderBrush="#FFFFFF"/>
-        <TextBox Grid.Row="2" Grid.ColumnSpan="5" Name="TB_Temp" TextAlignment="Center" Height="60" Width="160" FontSize="50" BorderBrush="#FFFFFF"/>
+        <TextBox Grid.Row="1" Grid.ColumnSpan="4" Name="TB_City" TextAlignment="Center" Height="60" FontSize="50" Foreground="#FFFFFF"/>
+        <TextBox Grid.Row="2" Grid.ColumnSpan="4" Name="TB_Temp" TextAlignment="Center" Height="60" Width="160" FontSize="50" Foreground="#FFFFFF"/>
 
-        <TextBox Grid.Row="4" Grid.Column="1" Name="TB_Fcst_Fday" TextAlignment="Center" Height="40" FontSize="30" BorderBrush="#FFFFFF"/>
-        <TextBox Grid.Row="5" Grid.Column="1" Name="TB_Fcst_Sday" TextAlignment="Center" Height="40" FontSize="30" BorderBrush="#FFFFFF"/>
-        <TextBox Grid.Row="6" Grid.Column="1" Name="TB_Fcst_Tday" TextAlignment="Center" Height="40" FontSize="30" BorderBrush="#FFFFFF"/>
+        <TextBox Grid.Row="5" Grid.Column="1" Name="TB_Fcst_Fday" TextAlignment="Center" Height="40" FontSize="29" Foreground="#FFFFFF"/>
+        <TextBox Grid.Row="6" Grid.Column="1" Name="TB_Fcst_Sday" TextAlignment="Center" Height="40" FontSize="29" Foreground="#FFFFFF"/>
+        <TextBox Grid.Row="7" Grid.Column="1" Name="TB_Fcst_Tday" TextAlignment="Center" Height="40" FontSize="29" Foreground="#FFFFFF"/>
 
-        <TextBox Grid.Row="4" Grid.Column="2" Name="TB_Tempmin_Fday" TextAlignment="Center" Height="40" FontSize="30" BorderBrush="#FFFFFF"/>
-        <TextBox Grid.Row="5" Grid.Column="2" Name="TB_Tempmin_Sday" TextAlignment="Center" Height="40" FontSize="30" BorderBrush="#FFFFFF"/>
-        <TextBox Grid.Row="6" Grid.Column="2" Name="TB_Tempmin_Tday" TextAlignment="Center" Height="40" FontSize="30" BorderBrush="#FFFFFF"/>
-        <TextBox Grid.Row="4" Grid.Column="3" Name="TB_Tempmax_Fday" TextAlignment="Center" Height="40" FontSize="30" BorderBrush="#FFFFFF"/>
-        <TextBox Grid.Row="5" Grid.Column="3" Name="TB_Tempmax_Sday" TextAlignment="Center" Height="40" FontSize="30" BorderBrush="#FFFFFF"/>
-        <TextBox Grid.Row="6" Grid.Column="3" Name="TB_Tempmax_Tday" TextAlignment="Center" Height="40" FontSize="30" BorderBrush="#FFFFFF"/>
+        <TextBox Grid.Row="5" Grid.Column="2" Name="TB_Tempmin_Fday" TextAlignment="Center" Height="40" FontSize="30" Foreground="#FFFFFF"/>
+        <TextBox Grid.Row="6" Grid.Column="2" Name="TB_Tempmin_Sday" TextAlignment="Center" Height="40" FontSize="30" Foreground="#FFFFFF"/>
+        <TextBox Grid.Row="7" Grid.Column="2" Name="TB_Tempmin_Tday" TextAlignment="Center" Height="40" FontSize="30" Foreground="#FFFFFF"/>
+        <TextBox Grid.Row="5" Grid.Column="3" Name="TB_Tempmax_Fday" TextAlignment="Center" Height="40" FontSize="30" Foreground="#FFFFFF"/>
+        <TextBox Grid.Row="6" Grid.Column="3" Name="TB_Tempmax_Sday" TextAlignment="Center" Height="40" FontSize="30" Foreground="#FFFFFF"/>
+        <TextBox Grid.Row="7" Grid.Column="3" Name="TB_Tempmax_Tday" TextAlignment="Center" Height="40" FontSize="30" Foreground="#FFFFFF"/>
+
+        <Grid Grid.Row="3" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="2">
+            <Image x:Name="ImgDay"/>
+        </Grid>
+
+        <Grid Grid.Row="5" Grid.Column="0">
+            <Image x:Name="ImgDay1"/>
+        </Grid>
+
+        <Grid Grid.Row="6" Grid.Column="0">
+            <Image x:Name="ImgDay2"/>
+        </Grid>
+
+        <Grid Grid.Row="7" Grid.Column="0">
+            <Image x:Name="ImgDay3"/>
+        </Grid>
+
+        <Grid.Background>
+            <ImageBrush Stretch="Fill" ImageSource="Assets/Background/after_noon.png"/>
+        </Grid.Background>
 
     </Grid>
 </Window>
