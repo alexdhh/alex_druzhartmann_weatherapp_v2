@@ -10,6 +10,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Newtonsoft.Json;
 using System.Net.Http;
+using System.Security.RightsManagement;
 
 namespace alex_druzhartmann_weatherapp_v2
 {
@@ -27,7 +28,7 @@ namespace alex_druzhartmann_weatherapp_v2
         public async Task GetWeather()
         {
             HttpClient client = new HttpClient();
-            HttpResponseMessage response = await client.GetAsync("https://www.prevision-meteo.ch/services/json/Marseille");
+            HttpResponseMessage response = await client.GetAsync("https://www.prevision-meteo.ch/services/json/Villejuif");
             if (response.IsSuccessStatusCode)
             {
                 var content = await response.Content.ReadAsStringAsync();
@@ -91,7 +92,7 @@ namespace alex_druzhartmann_weatherapp_v2
                 Uri asset3 = new Uri(tday_icon);
                 ImgDay3.Source = new BitmapImage(asset3);
 
-                // AFFICHAGE DANS TEXTBOX
+                // AFFICHAGE TEXTBOX
                 TB_City.Text = city;
                 TB_Temp.Text = temp.ToString() + "°";
                 TB_Fcst_Fday.Text = fday;
@@ -106,6 +107,11 @@ namespace alex_druzhartmann_weatherapp_v2
 
             }
             return;
+        }
+
+        public void GetFavoriteCities()
+        {
+           // A FAIRE
         }
     }
 

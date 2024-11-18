@@ -9,11 +9,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Assets\Background\after_noon.png" />
+    <None Remove="Assets\Background\background.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Assets\Background\after_noon.png">
+    <Content Include="Assets\Background\background.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

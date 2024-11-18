@@ -64,7 +64,7 @@
         </Grid>
 
         <Grid.Background>
-            <ImageBrush Stretch="Fill" ImageSource="Assets/Background/after_noon.png"/>
+            <ImageBrush Stretch="Fill" ImageSource="Assets/Background/background.png"/>
         </Grid.Background>
 
     </Grid>
