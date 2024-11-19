@@ -109,10 +109,6 @@ namespace alex_druzhartmann_weatherapp_v2
             return;
         }
 
-        public void GetFavoriteCities()
-        {
-           // A FAIRE
-        }
     }
 
     // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
