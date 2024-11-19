@@ -13,6 +13,13 @@
                 <Setter Property="Background" Value="Transparent"/>
                 <Setter Property="BorderThickness" Value="0"/>
             </Style>
+
+            <Style TargetType="{x:Type Button}">
+                <Setter Property="Background" Value="#2473EC"/>
+                <Setter Property="Foreground" Value="#FFFFFF"/>
+                <Setter Property="BorderThickness" Value="0, 0, 3, 3"/>
+                <Setter Property="BorderBrush" Value="#2863BE"/>
+            </Style>
         </Grid.Resources>
 
         <Grid.RowDefinitions>
@@ -51,9 +58,21 @@
 
         <TextBox Name="TB_EnterCity" Grid.Column="2" Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Margin="20, 20, 0, 0" BorderThickness="3"/>
 
-        <Button Name="BTN_Add" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="60" Height="35" Margin="20, 20, 0, 0" Content="Ajouter" Click="BTN_Add_Click"/>
+        <Button Name="BTN_Add" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="60" Height="35" Margin="20, 20, 0, 0" Content="Ajouter" Click="BTN_Add_Click">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
 
-        <Button Name="BTN_Reset" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Width="60" Height="35" Margin="20, 20, 0, 0" Content="Reset" Click="BTN_Reset_Click"/>
+        <Button Name="BTN_Reset" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Width="60" Height="35" Margin="20, 20, 0, 0" Content="Reset" Click="BTN_Reset_Click">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
 
         <Grid Grid.Row="3" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="2">
             <Image x:Name="ImgDay"/>
