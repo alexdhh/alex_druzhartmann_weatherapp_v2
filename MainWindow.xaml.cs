@@ -11,6 +11,7 @@ using System.Windows.Shapes;
 using Newtonsoft.Json;
 using System.Net.Http;
 using System.Security.RightsManagement;
+using System.IO;
 
 namespace alex_druzhartmann_weatherapp_v2
 {
@@ -22,13 +23,17 @@ namespace alex_druzhartmann_weatherapp_v2
         public MainWindow()
         {
             InitializeComponent();
-            GetWeather();
+            GetWeather("Annecy");
+            LoadFavorites();
         }
 
-        public async Task GetWeather()
+        string FavoritesFilePath = "favorite_cities.txt";
+
+        public async Task GetWeather(string cityurl)
         {
             HttpClient client = new HttpClient();
-            HttpResponseMessage response = await client.GetAsync("https://www.prevision-meteo.ch/services/json/Villejuif");
+            string url = $"https://www.prevision-meteo.ch/services/json/{cityurl}";
+            HttpResponseMessage response = await client.GetAsync(url);
             if (response.IsSuccessStatusCode)
             {
                 var content = await response.Content.ReadAsStringAsync();
@@ -109,6 +114,120 @@ namespace alex_druzhartmann_weatherapp_v2
             return;
         }
 
+        // EVENT POUR AJOUTER UNE VILLE LORSQU'ELLE EST ENTREE DANS LA TEXTBOX D'AJOUT
+        private void BTN_Add_Click(object sender, RoutedEventArgs e)
+        {
+            string newCity = TB_EnterCity.Text.Trim();
+
+            if (!string.IsNullOrEmpty(newCity))
+            {
+                if (!CB_Cities.Items.Contains(newCity))
+                {
+                    CB_Cities.Items.Add(newCity);
+                    AddCityToFile(newCity);
+                    TB_EnterCity.Text = string.Empty;
+
+                    MessageBox.Show($"{newCity} a été ajoutée aux favoris !");
+                }
+                else
+                {
+                    MessageBox.Show("Cette ville est déjà dans les favoris !");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Veuillez entrer une ville valide !");
+            }
+        }
+
+        // FONCTION POUR AJOUTER LA VILLE DE LA TEXTBOX DANS LE FICHER TEXTE
+        private void AddCityToFile(string city)
+        {
+            try
+            {
+                if (!File.Exists(FavoritesFilePath))
+                {
+                    using (File.Create(FavoritesFilePath)) { }
+                }
+                using (StreamWriter sw = File.AppendText(FavoritesFilePath))
+                {
+                    sw.WriteLine(city);
+                }
+                MessageBox.Show($"Ville ajoutée au fichier : {city}");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erreur lors de l'ajout au fichier : {ex.Message}");
+            }
+        }
+
+
+        // FONCTION POUR CHARGER LES VILLES STOCKEES DANS LE FICHIER TEXTE DANS LA COMBOBOX
+        private void LoadFavorites()
+        {
+            try
+            {
+                if (File.Exists(FavoritesFilePath))
+                {
+                    var cities = File.ReadAllLines(FavoritesFilePath).Distinct().ToList();
+
+                    foreach (var city in cities)
+                    {
+                        if (!string.IsNullOrEmpty(city) && !CB_Cities.Items.Contains(city))
+                        {
+                            CB_Cities.Items.Add(city);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erreur lors du chargement des favoris : {ex.Message}");
+            }
+        }
+
+        private void ClearFavorites()
+        {
+            try
+            {
+                if (File.Exists(FavoritesFilePath))
+                {
+                    File.WriteAllText(FavoritesFilePath, string.Empty);
+                    MessageBox.Show("Tous les favoris ont été supprimés !");
+                }
+                else
+                {
+                    MessageBox.Show("Aucun fichier de favoris trouvé !");
+                }
+                CB_Cities.Items.Clear();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erreur lors de la suppression des favoris : {ex.Message}");
+            }
+        }
+
+        private void BTN_Reset_Click(object sender, RoutedEventArgs e)
+        {
+            var result = MessageBox.Show("Êtes-vous sûr de vouloir supprimer tous les favoris ?",
+                                         "Confirmation",
+                                         MessageBoxButton.YesNo,
+                                         MessageBoxImage.Warning);
+
+            if (result == MessageBoxResult.Yes)
+            {
+                ClearFavorites();
+            }
+        }
+
+        private async void CB_Cities_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (CB_Cities.SelectedItem != null)
+            {
+                string selectedCity = CB_Cities.SelectedItem.ToString();
+                await GetWeather(selectedCity);
+            }
+        }
     }
 
     // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
