@@ -186,6 +186,8 @@ namespace alex_druzhartmann_weatherapp_v2
             }
         }
 
+
+        // FONCTION POUR SUPPRIMER TOUTES LES VILLES DANS LES FAVORIS
         private void ClearFavorites()
         {
             try
@@ -207,6 +209,7 @@ namespace alex_druzhartmann_weatherapp_v2
             }
         }
 
+        // EVENT POUR RESET LES VILLE ENREGISTREES DANS LES FAVORIS
         private void BTN_Reset_Click(object sender, RoutedEventArgs e)
         {
             var result = MessageBox.Show("Êtes-vous sûr de vouloir supprimer tous les favoris ?",
@@ -217,9 +220,11 @@ namespace alex_druzhartmann_weatherapp_v2
             if (result == MessageBoxResult.Yes)
             {
                 ClearFavorites();
+                GetWeather("Annecy");
             }
         }
 
+        // FONCTION QUI PERMET D'AFFICHER LES DONNEES METEO DE LA VILLE CHOISIE
         private async void CB_Cities_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (CB_Cities.SelectedItem != null)
